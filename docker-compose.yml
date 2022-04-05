@@ -1,0 +1,26 @@
+version: "3.5"
+
+services:
+  web:
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./laravel:/var/www/html/laravel
+      - /var/www/html/laravel/vendor/
+    build: 
+      context: ./laravel
+      dockerfile: .
+    command: php -S web:8000 -t public
+    restart: always
+  node:
+    build:
+      context: ./socket
+      dockerfile: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./socket:/var/www/html/socket
+      - ./var/www/html/socket/node_modules/
+    depends_on:
+      - web
+    restart: always

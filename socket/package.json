@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "start": "node socket.js"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.0",
+        "ws": "^8.5.0",
+        "axios": "^0.21.4"
+    }
+}
